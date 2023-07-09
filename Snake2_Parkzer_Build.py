@@ -48,7 +48,7 @@ WHITE = (255, 255, 255)
 font = pygame.font.SysFont(None, 50)
 
 # Set up the menu options
-menu_options = ["Community", "Original", "DLC"]
+menu_options = ["Community", "Original", "DLC", "Quit"]
 selected_option = 0
 
 def run_game(file_name):
@@ -79,6 +79,10 @@ while True:
                     print("DLC mode selected")
                     DLC_ACTIVATED = True
                     break
+                elif selected_option == 3:
+                    print("Quit the game")
+                    pygame.quit()
+                    sys.exit()
                     
                     
 
