@@ -255,7 +255,8 @@ while not game_over:
     # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            game_over = True
+            pygame.quit()
+            sys.exit()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 if microtransaction_window:
