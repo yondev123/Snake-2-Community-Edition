@@ -249,14 +249,15 @@ pygame.display.flip()
 
 # Game loop
 game_over = False
+game_open = True
 microtransaction_window = False
 while not game_over:
     if microtransaction_window == False:pygame.draw.rect(screen, (0,0,0), (0, 0, screen_width, screen_width))
     # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+            game_over = True
+            game_open = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 if microtransaction_window:
@@ -430,35 +431,36 @@ credits_lines = [
     {"text": "NuberCuber, Enderloch", "font": credits_font_small},
 ]
 
-# Play game over sound
-game_over_sound.play()
-
-# Display the credits
-screen.fill((0, 0, 0))  # Clear screen
-for i, line in enumerate(credits_lines):
-    text = line["font"].render(line["text"], True, (255, 255, 255))
-    screen.blit(text, (screen_width // 2 - text.get_width() // 2, screen_height // 2 + i*50 - len(credits_lines)*50 // 2))  # Center the text
-pygame.display.flip()
-
-# Wait for the credits to be displayed
-pygame.time.wait(15000)  # Show credits for 15 seconds
-
-# Wait for the sound to finish
-pygame.time.wait(int(game_over_sound.get_length() * 1000))
-
-# Open the YouTube video
-webbrowser.open("https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/")
-
-time.sleep(5)
-webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
-time.sleep(1)
-webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
-time.sleep(1)
-webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
-time.sleep(1)
-webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
-time.sleep(1)
-webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
+if game_open:
+    # Play game over sound
+    game_over_sound.play()
+    
+    # Display the credits
+    screen.fill((0, 0, 0))  # Clear screen
+    for i, line in enumerate(credits_lines):
+        text = line["font"].render(line["text"], True, (255, 255, 255))
+        screen.blit(text, (screen_width // 2 - text.get_width() // 2, screen_height // 2 + i*50 - len(credits_lines)*50 // 2))  # Center the text
+    pygame.display.flip()
+    
+    # Wait for the credits to be displayed
+    pygame.time.wait(15000)  # Show credits for 15 seconds
+    
+    # Wait for the sound to finish
+    pygame.time.wait(int(game_over_sound.get_length() * 1000))
+    
+    # Open the YouTube video
+    webbrowser.open("https://www.nintendo.com/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/")
+    
+    time.sleep(5)
+    webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
+    time.sleep(1)
+    webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
+    time.sleep(1)
+    webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
+    time.sleep(1)
+    webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
+    time.sleep(1)
+    webbrowser.open("https://www.youtube.com/watch?v=3B21d32wn9s&ab_channel=PointCrow")
 
 # Quit the game
 pygame.quit()
